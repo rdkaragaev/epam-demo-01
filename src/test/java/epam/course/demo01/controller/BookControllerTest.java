@@ -2,6 +2,7 @@ package epam.course.demo01.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import epam.course.demo01.dto.BookDto;
+import epam.course.demo01.entity.Book;
 import epam.course.demo01.service.BookService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.testSecurityContext;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -35,12 +38,19 @@ class BookControllerTest {
 
     @Test
     @WithMockUser
-    @DisplayName("When given valid BookDto input object, then return 200 OK")
+    @DisplayName("When given valid BookDto input object, perform HTTP POST on /books, then return 200 OK")
     void whenValidInput_thenReturn200ok() throws Exception {
 
         BookDto bookDto = new BookDto();
         bookDto.setName("Test book");
         bookDto.setReleaseDate(LocalDate.of(1995, 7, 3));
+
+        Book newBook = new Book();
+        newBook.setId(1L);
+        newBook.setName("Test Book");
+        newBook.setReleaseDate(LocalDate.now());
+
+        when(bookService.createBook(any(BookDto.class))).thenReturn(newBook);
 
         mockMvc.perform(post("/books")
                 .with(testSecurityContext())
