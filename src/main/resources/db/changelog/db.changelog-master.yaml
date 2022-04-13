@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/v-1.0/create-book-table.sql
+  - include:
+      file: db/changelog/v-2.0/insert-book-data.sql
