@@ -33,12 +33,12 @@ spring:
       path: ./logs
       name: ${logging.file.path}/log.log
 
-    security:
-      oauth2:
-        client:
-          registration:
-            github:
-              clientId: ${GITHUB_CLIENT_ID}
-              clientSecret: ${GITHUB_CLIENT_SECRET}
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: ${GITHUB_CLIENT_ID}
+            clientSecret: ${GITHUB_CLIENT_SECRET}
 
 
