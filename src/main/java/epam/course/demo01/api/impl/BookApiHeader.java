@@ -8,7 +8,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum BookApiHeader implements ApiHeader {
 
-    CUSTOM_HEADER("Custom-Header", "Custom header value");
+    CUSTOM_HEADER("Custom-Header", "Custom header value"),
+    BOOK_DELETION_HEADER("Book-Deletion", "Exception occurred during book deletion attempt");
 
     private final String header;
     private final String headerValue;

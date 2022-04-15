@@ -6,9 +6,4 @@ public class NoSuchBookException extends RuntimeException {
         super("Книги с таким id[" + id + "] не найдено");
     }
 
-    @Deprecated(forRemoval = true)
-    public NoSuchBookException(String name) {
-        super("Книги с названием [" + name + "] не найдено");
-    }
-
 }

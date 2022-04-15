@@ -45,10 +45,11 @@ class BookControllerTest {
         bookDto.setName("Test book");
         bookDto.setReleaseDate(LocalDate.of(1995, 7, 3));
 
-        Book newBook = new Book();
-        newBook.setId(1L);
-        newBook.setName("Test Book");
-        newBook.setReleaseDate(LocalDate.now());
+        Book newBook = Book.builder()
+                .id(1L)
+                .name("Test Book")
+                .releaseDate(LocalDate.now())
+                .build();
 
         when(bookService.createBook(any(BookDto.class))).thenReturn(newBook);
 

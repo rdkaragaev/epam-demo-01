@@ -1,5 +1,6 @@
 package epam.course.demo01.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
+@Builder
 @ToString
 public class Book {
 
