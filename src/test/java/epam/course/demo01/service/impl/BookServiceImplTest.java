@@ -1,6 +1,5 @@
 package epam.course.demo01.service.impl;
 
-import epam.course.demo01.converter.BookToBookDtoConverter;
 import epam.course.demo01.dto.BookDto;
 import epam.course.demo01.entity.Book;
 import epam.course.demo01.exception.BookDeletionException;
@@ -11,9 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.time.LocalDate;
@@ -88,6 +85,9 @@ class BookServiceImplTest {
         doReturn(savedUpdatedBook).when(bookRepository).save(any());
 
         Book result = bookService.updateBook(78L, bookDto);
+
+        verify(bookRepository, times(1)).findById(78L);
+        verify(bookRepository, times(1)).save(any());
 
         assertAll(() -> {
             assertEquals(savedUpdatedBook.getId(), result.getId());

@@ -23,7 +23,7 @@ public class BookServiceImpl implements BookService {
     public Book getBook(Long id) {
         return bookRepository.findById(id)
                 .orElseThrow(() -> {
-                    log.debug("No such book with id[{}]", id);
+                    log.warn("No such book with id[{}]", id);
                     return new NoSuchBookException(id);
                 });
     }

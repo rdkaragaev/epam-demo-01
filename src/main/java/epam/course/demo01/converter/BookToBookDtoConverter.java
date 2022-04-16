@@ -7,8 +7,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class BookToBookDtoConverter implements Converter<Book, BookDto> {
+
     @Override
     public BookDto convert(Book source) {
         return new BookDto(source);
     }
+
 }
